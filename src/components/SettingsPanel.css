@@ -1,0 +1,283 @@
+.settings-section {
+    background: var(--surface-1);
+    border-bottom: var(--border);
+}
+
+.settings-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-block: 2rem;
+}
+
+/* ── GROUP ── */
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 160px;
+}
+
+.settings-group--slider {
+    flex: 2;
+    min-width: 220px;
+}
+
+.settings-group--cta {
+    justify-content: flex-end;
+    flex: 1;
+    min-width: 160px;
+}
+
+.settings-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--copper);
+    text-transform: uppercase;
+}
+
+/* ── MODE TOGGLE ── */
+.mode-toggle {
+    display: flex;
+    gap: 0;
+}
+
+.mode-btn {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--surface-2);
+    color: var(--muted);
+    border: 1px solid var(--surface-3);
+    border-right: none;
+    padding: 0.5rem 0.85rem;
+    cursor: pointer;
+    transition: all 150ms ease;
+    min-height: 38px;
+}
+
+.mode-btn:last-child {
+    border-right: 1px solid var(--surface-3);
+}
+
+.mode-btn:hover {
+    color: var(--ice);
+    border-color: rgba(232, 212, 77, 0.3);
+}
+
+.mode-btn.active {
+    background: var(--yellow);
+    color: var(--bg);
+    border-color: var(--yellow);
+}
+
+/* ── SLIDER ── */
+.slider-wrap {
+    position: relative;
+    padding-top: 1.75rem;
+}
+
+.slider-tooltip {
+    position: absolute;
+    top: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--yellow);
+    color: var(--bg);
+    padding: 0.15rem 0.4rem;
+    pointer-events: none;
+    transition: left 50ms linear;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.quality-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 0;
+    background: linear-gradient(to right,
+            var(--yellow) 0%,
+            var(--yellow) var(--fill),
+            var(--surface-3) var(--fill),
+            var(--surface-3) 100%);
+    outline: none;
+    cursor: pointer;
+}
+
+.quality-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 0;
+    background: var(--yellow);
+    cursor: grab;
+    transition: transform 100ms ease;
+}
+
+.quality-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+.quality-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 0;
+    border: none;
+    background: var(--yellow);
+    cursor: grab;
+}
+
+.slider-ends {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-top: 0.35rem;
+}
+
+.size-estimate {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--success);
+}
+
+/* ── SELECT WRAPPER ── */
+.select-wrapper {
+    position: relative;
+}
+
+/* ── CUSTOM KB INPUT ── */
+.custom-kb-wrap {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.4rem;
+}
+
+.unit-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* ── COMPRESS BUTTON ── */
+.btn-compress {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.5rem;
+    font-size: 14px;
+}
+
+/* ── OPTIONS ROW ── */
+.settings-options {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-block: 1rem;
+    border-top: var(--border);
+}
+
+.toggle-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--muted);
+    transition: color 150ms ease;
+    user-select: none;
+}
+
+.toggle-option:hover {
+    color: var(--ice);
+}
+
+.toggle-track {
+    width: 32px;
+    height: 16px;
+    background: var(--surface-3);
+    border-radius: 0;
+    position: relative;
+    transition: background 150ms ease;
+    flex-shrink: 0;
+    border: 1px solid var(--surface-3);
+}
+
+.toggle-track.on {
+    background: var(--yellow);
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    background: var(--bg);
+    transition: transform 150ms ease;
+}
+
+.toggle-track.on .toggle-thumb {
+    transform: translateX(16px);
+}
+
+/* ── PRESETS ── */
+.presets-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+.preset-chip {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--surface-2);
+    color: var(--muted);
+    border: 1px solid var(--surface-3);
+    border-radius: 2px;
+    padding: 0.3rem 0.75rem;
+    cursor: pointer;
+    transition: all 150ms ease;
+    min-height: 32px;
+    letter-spacing: 0.04em;
+}
+
+.preset-chip:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+}
+
+.preset-chip.active {
+    background: rgba(232, 212, 77, 0.12);
+    border-color: var(--yellow);
+    color: var(--yellow);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 940px) {
+    .settings-inner {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .settings-group--cta {
+        width: 100%;
+    }
+
+    .presets-row {
+        margin-left: 0;
+    }
+}

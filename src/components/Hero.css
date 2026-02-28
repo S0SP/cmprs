@@ -1,0 +1,325 @@
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--header-h);
+    position: relative;
+    overflow: hidden;
+    /* Diagonal hash texture */
+    background-image:
+        repeating-linear-gradient(45deg,
+            rgba(240, 238, 232, 0.018) 0px,
+            rgba(240, 238, 232, 0.018) 1px,
+            transparent 1px,
+            transparent 14px);
+}
+
+.hero-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    padding-block: 4rem;
+    position: relative;
+}
+
+/* ── VERTICAL LABEL ── */
+.vertical-label {
+    position: absolute;
+    left: var(--gutter);
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: center center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ── HEADLINE ── */
+.hero-headline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1em;
+    text-align: center;
+}
+
+.headline-word {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 9vw, 100px);
+    font-weight: 400;
+    color: var(--ice);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    opacity: 0;
+    animation: fadeUp 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── UPLOAD ZONE WRAPPER ── */
+.upload-zone-wrapper {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: fadeIn 500ms ease 1000ms both;
+}
+
+/* ── UPLOAD ZONE ── */
+.upload-zone {
+    position: relative;
+    width: 100%;
+    min-height: 240px;
+    background: var(--surface-1);
+    background-image: repeating-linear-gradient(45deg,
+            rgba(240, 238, 232, 0.02) 0px,
+            rgba(240, 238, 232, 0.02) 1px,
+            transparent 1px,
+            transparent 12px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 200ms ease;
+    box-shadow: var(--shadow-warm);
+}
+
+.upload-zone.drag-over {
+    background: #1A1A14;
+}
+
+.upload-zone:hover .corner {
+    opacity: 1;
+}
+
+/* ── SVG DASHED BORDER ── */
+.dashed-border {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.dash-rect {
+    fill: none;
+    stroke: rgba(240, 238, 232, 0.18);
+    stroke-width: 1;
+    stroke-dasharray: 8 6;
+    stroke-dashoffset: 0;
+}
+
+.dash-rect.animate {
+    stroke: var(--yellow);
+    stroke-opacity: 0.7;
+    animation: dashSpin 1.2s linear infinite;
+}
+
+/* ── CORNER BRACKETS ── */
+.corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    opacity: 0.35;
+    transition: opacity 200ms ease;
+}
+
+.corner.tl {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid var(--yellow);
+    border-left: 2px solid var(--yellow);
+}
+
+.corner.tr {
+    top: -1px;
+    right: -1px;
+    border-top: 2px solid var(--yellow);
+    border-right: 2px solid var(--yellow);
+}
+
+.corner.bl {
+    bottom: -1px;
+    left: -1px;
+    border-bottom: 2px solid var(--yellow);
+    border-left: 2px solid var(--yellow);
+}
+
+.corner.br {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid var(--yellow);
+    border-right: 2px solid var(--yellow);
+}
+
+.upload-zone:hover .corner,
+.upload-zone.drag-over .corner {
+    opacity: 1;
+}
+
+/* ── DROP CONTENT ── */
+.drop-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 2rem;
+    pointer-events: none;
+    text-align: center;
+}
+
+.drop-icon {
+    margin-bottom: 0.5rem;
+}
+
+.upload-zone.drag-over .drop-icon svg {
+    animation: pulse 800ms ease infinite;
+}
+
+.drop-label {
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    color: var(--ice);
+    text-transform: uppercase;
+}
+
+.drop-accepts {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+}
+
+.drop-maxsize {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--surface-3);
+    letter-spacing: 0.04em;
+}
+
+/* ── FILE CHIPS ── */
+.file-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.file-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--surface-2);
+    border: var(--border);
+    padding: 0.35rem 0.6rem;
+    animation: slideIn 200ms ease both;
+}
+
+.chip-ext {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    background: var(--surface-3);
+    color: var(--yellow);
+    padding: 0.15rem 0.35rem;
+    letter-spacing: 0.06em;
+}
+
+.chip-name {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ice);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chip-size {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--copper);
+}
+
+.chip-remove {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0 0.15rem;
+    min-width: 20px;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 150ms ease;
+}
+
+.chip-remove:hover {
+    color: var(--error);
+}
+
+/* ── UPLOAD ACTIONS ── */
+.upload-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    animation: fadeIn 400ms ease 1200ms both;
+    opacity: 0;
+    animation-fill-mode: both;
+}
+
+.trust-sep {
+    color: var(--surface-3);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+    .vertical-label {
+        display: none;
+    }
+
+    .upload-zone {
+        min-height: 200px;
+    }
+
+    .upload-actions {
+        flex-direction: column;
+    }
+
+    .upload-actions .btn-primary,
+    .upload-actions .btn-secondary {
+        width: 100%;
+    }
+
+    .trust-strip {
+        font-size: 11px;
+        gap: 0.5rem;
+    }
+
+    .trust-sep {
+        display: none;
+    }
+
+    .trust-strip span {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,136 @@
+.processing-section {
+    min-height: calc(100vh - var(--header-h));
+    display: flex;
+    align-items: center;
+    background: var(--bg);
+    padding-block: 4rem;
+}
+
+.processing-inner {
+    width: 100%;
+    max-width: 720px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ── HEADER ── */
+.processing-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+}
+
+.processing-status-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--copper);
+    text-transform: uppercase;
+}
+
+.processing-filename {
+    font-size: 14px;
+    color: var(--ice);
+    font-weight: 500;
+}
+
+/* ── PROGRESS ── */
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-track {
+    flex: 1;
+    height: 4px;
+    background: var(--surface-3);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--yellow);
+    position: relative;
+    transition: width 200ms ease;
+    overflow: hidden;
+}
+
+.progress-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            transparent 100%);
+    animation: shimmer 1.6s ease-in-out infinite;
+    width: 50%;
+}
+
+.progress-pct {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--yellow);
+    min-width: 36px;
+    text-align: right;
+}
+
+/* ── LOG ── */
+.processing-log {
+    background: var(--surface-1);
+    border: var(--border);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-height: 160px;
+}
+
+.log-line {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(80, 200, 120, 0.75);
+    /* muted green for history */
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: fadeUp 250ms ease both;
+    line-height: 1.6;
+}
+
+.log-line--active {
+    color: var(--yellow);
+    /* brightest — current line */
+    opacity: 1 !important;
+    animation: none;
+}
+
+.log-line--idle {
+    color: var(--muted);
+    opacity: 1 !important;
+    animation: none;
+}
+
+/* ── CANCEL ── */
+.btn-cancel {
+    align-self: flex-start;
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: none;
+    color: var(--muted);
+    border: 1px solid var(--surface-3);
+    border-radius: 0;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    transition: color 150ms ease, border-color 150ms ease;
+    min-height: 44px;
+}
+
+.btn-cancel:hover {
+    color: var(--error);
+    border-color: var(--error);
+}

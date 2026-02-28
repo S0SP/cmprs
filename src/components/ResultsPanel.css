@@ -1,0 +1,251 @@
+.results-section {
+    padding-block: 3rem;
+    min-height: calc(100vh - var(--header-h));
+}
+
+.results-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ── BATCH SUMMARY ── */
+.batch-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface-1);
+    border: var(--border);
+    border-left: 3px solid var(--yellow);
+    padding: 0.85rem 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeIn 300ms ease both;
+}
+
+.batch-stats {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ice);
+}
+
+/* ── RESULTS GRID ── */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 580px), 1fr));
+    gap: 0.75rem;
+}
+
+/* ── RESULT CARD ── */
+.result-card {
+    background: var(--surface-1);
+    border: var(--border);
+    border-left: 3px solid var(--yellow);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: slideIn 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    box-shadow: var(--shadow-warm);
+}
+
+/* Card entry border flash */
+@keyframes borderFlash {
+    0% {
+        border-left-color: #fff;
+    }
+
+    100% {
+        border-left-color: var(--yellow);
+    }
+}
+
+.result-card {
+    animation: slideIn 400ms cubic-bezier(0.22, 1, 0.36, 1) both, borderFlash 600ms ease both;
+}
+
+.card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* ── FILE BADGE ── */
+.card-badge {
+    flex-shrink: 0;
+}
+
+.badge-ext {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    background: var(--surface-2);
+    color: var(--yellow);
+    border: 1px solid var(--surface-3);
+    padding: 0.35rem 0.6rem;
+    min-width: 48px;
+    text-align: center;
+}
+
+/* ── CARD INFO ── */
+.card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.card-name {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ice);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+
+.card-sizes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.size-original {
+    color: var(--muted);
+    text-decoration: line-through;
+}
+
+.size-arrow {
+    color: var(--surface-3);
+}
+
+.size-compressed {
+    color: var(--success);
+}
+
+/* ── BEFORE/AFTER BAR ── */
+.card-after-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.before-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--surface-3);
+    position: relative;
+    overflow: hidden;
+}
+
+.after-bar {
+    height: 100%;
+    background: var(--yellow);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bar-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+/* ── REDUCTION PERCENTAGE ── */
+.card-reduction {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.reduction-pct {
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--yellow);
+    animation: countUp 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── CARD ACTIONS ── */
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.card-action-btn {
+    font-size: 11px;
+    padding: 0.45rem 0.9rem;
+    letter-spacing: 0.08em;
+    min-height: 34px;
+}
+
+.btn-ghost {
+    background: none;
+    border: none;
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 0.45rem 0.5rem;
+    transition: color 150ms ease;
+    min-height: 34px;
+}
+
+.btn-ghost:hover {
+    color: var(--error);
+}
+
+/* ── DELETION NOTICE ── */
+.deletion-notice {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    padding: 0.85rem 1.25rem;
+    background: var(--surface-1);
+    border: var(--border);
+}
+
+.notice-icon {
+    font-size: 14px;
+}
+
+.countdown {
+    color: var(--copper);
+    font-weight: 500;
+}
+
+/* ── RESULTS FOOTER ── */
+.results-footer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media (max-width: 640px) {
+    .card-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .reduction-pct {
+        font-size: 18px;
+    }
+
+    .batch-summary {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
